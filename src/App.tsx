@@ -1,8 +1,13 @@
-import React, { useRef, useState } from "react"
+import { useRef, useState } from "react"
 import "./App.css"
 import SearchForm from "./components/SearchForm"
 import axios from "axios"
-import { ProductType, ProductFormData, SearchFormData } from "./types"
+import {
+  ProductType,
+  ProductResponse,
+  ProductFormData,
+  SearchFormData,
+} from "./types"
 import ProductForm from "./components/ProductForm"
 import Product from "./components/Product"
 
@@ -21,6 +26,8 @@ function App() {
       .get(`https://sarwas.azurewebsites.net/api/product?search=${data.query}`)
       .then((response) => {
         //handle the response here
+        const data: ProductResponse = JSON.parse(response.data)
+        data?.data && setProductList(data.data)
         console.log(response.data)
       })
       .catch((error) => {
