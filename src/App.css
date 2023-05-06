@@ -81,6 +81,10 @@
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
 }
 
+.product * {
+  font-size: small;
+}
+
 .product > h4 {
   margin-top: 0.2em;
   margin-bottom: 0.5em;
@@ -92,6 +96,11 @@
 .product b {
   color: #444;
   margin-right: 5px;
+}
+
+.product button {
+  margin-top: 0.5rem;
+  font-size: small;
 }
 
 #footer {

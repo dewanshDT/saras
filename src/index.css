@@ -14,7 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #d6d6d6;
-  background-image: radial-gradient(#c9c9c9 20%, #d6d6d6 20%);
+  background-image: radial-gradient(#0000000a 20%, #0000 20%);
   background-position: 0 0;
   background-size: 20px 20px;
 }
@@ -52,6 +52,16 @@ button {
 button {
   color: #3992ff;
   font-weight: 500;
+}
+
+button.transparent {
+  background-color: none;
+  box-shadow: none;
+}
+
+button.transparent:hover {
+  box-shadow: none;
+  cursor: pointer;
 }
 
 textarea:hover,

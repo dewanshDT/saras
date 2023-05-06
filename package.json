@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://dewanshDT.github.io/swaras",
+  "homepage": "https://dewanshDT.github.io/saras",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
