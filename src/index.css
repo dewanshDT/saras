@@ -86,6 +86,13 @@ button:active {
   transform: translateY(1px);
 }
 
+button:disabled,
+textarea:disabled,
+input:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 /* input:focus {
   box-shadow: 0 0 0 2px lightcoral;
 } */
@@ -100,4 +107,8 @@ dialog {
   border: none;
   border-radius: 10px;
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(3px);
 }
