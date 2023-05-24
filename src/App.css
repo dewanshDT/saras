@@ -75,6 +75,7 @@
 }
 
 #product-list > h2 {
+  margin-top: 2rem;
   text-align: center;
   color: #646464;
   font-size: xx-large;
@@ -82,8 +83,7 @@
 
 .spinner {
   animation: spin 600ms infinite linear;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin-top: 2rem;
   align-self: center;
   font-size: xx-large;
   color: #666;
