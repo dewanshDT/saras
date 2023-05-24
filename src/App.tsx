@@ -56,6 +56,12 @@ function App() {
   }
   return (
     <>
+      <dialog ref={productFormDialogRef}>
+        <ProductForm
+          onSubmit={onAddProduct}
+          onClose={() => productFormDialogRef.current?.close()}
+        />
+      </dialog>
       <main>
         <div id="search">
           <h1>Products</h1>
@@ -71,12 +77,6 @@ function App() {
             </button>
           </div>
         </div>
-        <dialog ref={productFormDialogRef}>
-          <ProductForm
-            onSubmit={onAddProduct}
-            onClose={() => productFormDialogRef.current?.close()}
-          />
-        </dialog>
 
         <div id="product-list">
           {loading ? (
