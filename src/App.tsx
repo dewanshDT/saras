@@ -1,4 +1,5 @@
 import { useRef, useState } from "react"
+import { BsSearchHeart } from "react-icons/bs"
 import "./App.css"
 import SearchForm from "./components/SearchForm"
 import axios from "axios"
@@ -10,33 +11,42 @@ import {
 } from "./types"
 import ProductForm from "./components/ProductForm"
 import Product from "./components/Product"
+import Spinner from "./components/Spinner"
+
+// const BASE_API_URL = "http://localhost:8000"
+const BASE_API_URL = "https://sea-turtle-app-y5sxy.ondigitalocean.app"
 
 function App() {
-  const [productList, setProductList] = useState<ProductType[]>([
-    {
-      asin: "B00ICB6NB4",
-      title: "Illinois Private Security Contractor License Exam Prep Kit",
-      ccScore: 4.4720715835141,
-    },
-  ])
+  const [loading, setLoading] = useState<boolean>(false)
+  const [productList, setProductList] = useState<ProductType[]>([])
   const productFormDialogRef = useRef<HTMLDialogElement>(null)
 
+  // useEffect(() => {
+  //   axios
+  //     .get(`${BASE_API_URL}/api/product?search=tablet`)
+  //     .then((data) => console.log(data))
+  // }, [])
+
   const onSearch = (data: SearchFormData) => {
+    setLoading(true)
     axios
-      .get(`https://sarwas.azurewebsites.net/api/product?search=${data.query}`)
+      // .get(`${BASE_API_URL}/products?q=${data.query}`) // for node
+      .get(`${BASE_API_URL}/api/product?search=${data.query}`)
       .then((response) => {
         //handle the response here
-        const data: ProductResponse = JSON.parse(response.data)
+        const data: ProductResponse = response.data
         data?.data && setProductList(data.data)
         console.log(response.data)
+        setLoading(false)
       })
       .catch((error) => {
         console.error(error)
+        setLoading(false)
       })
   }
   const onAddProduct = (data: ProductFormData) => {
     axios
-      .post(`https://sarwas.azurewebsites.net/api/add-product`, data)
+      .post(`${BASE_API_URL}/api/add-product/`, data)
       .then((response) => {
         console.log(response)
       })
@@ -67,10 +77,19 @@ function App() {
             onClose={() => productFormDialogRef.current?.close()}
           />
         </dialog>
+
         <div id="product-list">
-          {productList?.map((product) => (
-            <Product product={product} key={product.asin} />
-          ))}
+          {loading ? (
+            <Spinner />
+          ) : productList.length !== 0 ? (
+            productList?.map((product) => (
+              <Product product={product} key={product.asin} />
+            ))
+          ) : (
+            <h2>
+              <BsSearchHeart />
+            </h2>
+          )}
         </div>
       </main>
       <div id="footer">

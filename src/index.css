@@ -20,7 +20,18 @@ body {
 }
 
 main {
-  padding: 1rem;
+  width: 100%;
+}
+
+main > * {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+@media screen and (min-width: 800px) {
+  main {
+    width: 800px;
+  }
 }
 
 code {

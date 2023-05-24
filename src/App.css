@@ -1,5 +1,5 @@
 #search {
-  width: 100%;
+  width: full;
 }
 #search > div {
   display: flex;
@@ -67,11 +67,26 @@
 }
 
 #product-list {
-  min-height: 500px;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
   gap: 1.5rem;
+}
+
+#product-list > h2 {
+  text-align: center;
+  color: #646464;
+  font-size: xx-large;
+}
+
+.spinner {
+  animation: spin 600ms infinite linear;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-self: center;
+  font-size: xx-large;
+  color: #666;
 }
 
 .product {
@@ -120,4 +135,13 @@
   height: 1em;
   margin-left: 4px;
   margin-right: 4px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
