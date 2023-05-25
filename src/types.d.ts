@@ -12,7 +12,9 @@ export interface ProductResponse {
 }
 
 export interface ProductType {
-  asin: string
+  asin?: string | undefined
   title: string
-  ccScore: number
+  ccScore?: number | undefined
+  description?: string | undefined
+  message?: string | undefined
 }

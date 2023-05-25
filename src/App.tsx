@@ -47,6 +47,13 @@ function App() {
     axios
       .post(`${BASE_API_URL}/api/add-product/`, data)
       .then((response) => {
+        setProductList([
+          {
+            title: response.data?.data.title,
+            description: response?.data.data.description,
+            message: response?.data.message,
+          },
+        ])
         console.log(response)
       })
       .catch((error) => {
