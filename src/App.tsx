@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { BsSearchHeart } from "react-icons/bs"
 import "./App.css"
 import SearchForm from "./components/SearchForm"
@@ -21,14 +21,9 @@ function App() {
   const [loading, setLoading] = useState<boolean>(false)
   const [itemAdding, setItemAdding] = useState<boolean>(false)
   const [productList, setProductList] = useState<ProductType[]>([])
+  const mainref = useRef<HTMLDivElement>(null)
   const { reset } = useForm()
   const productFormDialogRef = useRef<HTMLDialogElement>(null)
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`${BASE_API_URL}/api/product?search=tablet`)
-  //     .then((data) => console.log(data))
-  // }, [])
 
   const onSearch = (data: SearchFormData) => {
     setLoading(true)

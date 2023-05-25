@@ -4,6 +4,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 #root {
@@ -11,21 +12,36 @@ body {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   background-color: #d6d6d6;
   background-image: radial-gradient(#0000000a 20%, #0000 20%);
   background-position: 0 0;
   background-size: 20px 20px;
+  overflow: hidden;
 }
 
 main {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
 }
 
 main > * {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a8a8a8;
+  border-radius: 999px;
 }
 
 @media screen and (min-width: 800px) {
